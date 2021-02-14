@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="redPic">
+    <file>Red.png</file>
+  </qresource>
+</RCC>
