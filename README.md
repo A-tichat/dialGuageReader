@@ -1,8 +1,8 @@
 # dialGuageReader
 
-# library
- - pip install pyserial
- - pip install pandas
- - pip install threading
- - pip install glob
- - pip install PyQt5
+# Initial
+- install python
+- double click install.bat
+
+# Run
+double click run.bat
