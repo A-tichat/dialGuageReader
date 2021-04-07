@@ -1,1 +1,1 @@
-start cmd /k "pip install -r library.txt"
+::start cmd /k "pip install -r library.txt"
