@@ -21,7 +21,7 @@ void step_recording(){
   is_record = true;
 
   int j = 0;
-  while (is_record){
+  while (is_open_motor){
     if (j < 360){
       //Spin the stepper motor 1 revolution slowly:
       run_stepping(1);
@@ -31,5 +31,6 @@ void step_recording(){
       break;
     }
   }
+  is_open_motor = false;
   is_record = false;
 }

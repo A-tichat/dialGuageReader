@@ -10,6 +10,7 @@
 String inputString = "";
 bool stringComplete = false;
 bool is_record = false;
+bool is_open_motor = false;
 
 static struct pt pt1, pt2; // each protothread needs one of these
 
@@ -53,10 +54,11 @@ void loop() {
   if (stringComplete) {
     if (inputString == "start\n"){
 //      digitalWrite(LEDPin, HIGH);
-      is_record = true;
+      is_open_motor = true;
     } else if (inputString == "stop\n"){
 //      digitalWrite(LEDPin, LOW);
       is_record = false;
+      is_open_motor = false;
     }
     inputString="";
     stringComplete = false;
