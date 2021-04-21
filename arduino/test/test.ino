@@ -1,4 +1,4 @@
-#define UARTBaudRate 115200
+#define UARTBaudRate 9600
 #define INIT_STEPPER 36
 #define STEP_INTERVAL 100
 
@@ -19,7 +19,7 @@ unsigned long previousMillis = 0;
 void get_dial_data(){
   ledStage = !ledStage;
   digitalWrite(ledPin, ledStage);
-  Serial.print(random(-100, 100) / 10.0);
+  Serial.print(random(-100, 100) / 100.0);
   Serial.println();
 }
 

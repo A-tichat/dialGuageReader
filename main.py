@@ -1,7 +1,6 @@
 import re
 import pandas as pd
 import sys
-import numpy as np
 import serial
 import glob
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
@@ -22,7 +21,7 @@ class MplCanvas(FigureCanvas):
     def __init__(self, parent=None, width=5, height=4, dpi=100):
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = fig.add_subplot(111)
-        self.axes.set_ylim(bottom=-10, top=10)
+        self.axes.set_ylim(bottom=-1, top=1)
         super(MplCanvas, self).__init__(fig)
 
 
@@ -80,14 +79,14 @@ class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         uic.loadUi("resource/mainQt.ui", self)
+
         # test data
-        self.canvas = MplCanvas(self, width=5, height=4, dpi=100)
+        self.canvas = MplCanvas(self, width=10, height=8, dpi=100)
         self.lay = QtWidgets.QVBoxLayout(self.content_plot)
         self.lay.addWidget(self.canvas)
         self.initialGraph()
 
         # set default variable
-        self.rowCount = 1
         self.csv_log = pd.DataFrame(columns=['No', 'Value', 'Time', 'Date'])
         self.setToleranceValue()
         self.previousTime = Date.now()
@@ -139,16 +138,16 @@ class MyWindow(QtWidgets.QMainWindow):
             rowPosition, 2, QtWidgets.QTableWidgetItem(datetime.strftime('%d/%m/%Y')))
         self.tableData.scrollToBottom()
 
-        self.maximumData = float(data) if float(
-            data) > self.maximumData else self.maximumData
-        self.minimumData = float(data) if float(
-            data) < self.minimumData else self.minimumData
-        self.sumData += float(data)
+        fdata = float(data)
+
+        self.maximumData = fdata if fdata > self.maximumData else self.maximumData
+        self.minimumData = fdata if fdata < self.minimumData else self.minimumData
+        self.sumData = round(self.sumData + fdata, 2)
         self.fiTotResult.setText('{:.2f}'.format(self.maximumData))
         self.fiResult.setText('{:.2f}'.format(
             self.maximumData-self.minimumData))
-        self.frResult.setText('{:.2f}'.format(
-            self.sumData/np.size(self.y_values)))
+        self.frResult.setText('{:.3f}'.format(
+            self.sumData/float(self.tableData.rowCount())))
 
     def scanClick(self):
         portlist = self.getComPort()
@@ -165,7 +164,7 @@ class MyWindow(QtWidgets.QMainWindow):
             self.setToleranceValue()
             self.fiResult.setText('0.00')
             self.fiTotResult.setText('{:.2f}'.format(self.maximumData))
-            self.frResult.setText('0.00')
+            self.frResult.setText('0.000')
             self.scanBtn.setEnabled(False)
             self.disconnectBtn.setEnabled(True)
             self.startBtn.setEnabled(True)
@@ -211,14 +210,13 @@ class MyWindow(QtWidgets.QMainWindow):
         self.comboBaudRate.clear()
         self.comboBaudRate.addItems(['300', '1200', '2400', '4800', '9600', '19200', '38400', '57600',
                                      '74880', '115200', '230400', '250000', '500000', '1000000', '2000000'])
-        self.comboBaudRate.setCurrentIndex(9)
+        self.comboBaudRate.setCurrentIndex(4)
         self.connectBtn.setEnabled(True)
 
     def comboBaudRateChange(self):
         self.ser.baudrate = int(self.comboBaudRate.currentText())
 
     def startClick(self):
-        # self.tableData.setRowCount(0)
         self.clearClick()
         # initial thread
         self.thread = QtCore.QThread()
@@ -345,10 +343,6 @@ class MyWindow(QtWidgets.QMainWindow):
 
 def checkFloat(inputData):
     return re.search(r'^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$', inputData)
-
-
-def getlast(data):
-    return data[-1] if len(data) > 0 else (np.pi/30)*-1
 
 
 if __name__ == '__main__':

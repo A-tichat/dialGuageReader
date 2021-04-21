@@ -2,7 +2,7 @@
 
 #define UARTBaudRate 9600
 #define INIT_STEPPER 360
-#define STEP_INTERVAL 500
+#define STEP_INTERVAL 100
 
 #define dirPin 2 // Orange Line CW+
 #define stepPin 3 // Yellow Line CLK+

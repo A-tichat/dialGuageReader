@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>893</width>
+    <width>920</width>
     <height>554</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>317</width>
+      <width>350</width>
       <height>87</height>
      </rect>
     </property>
@@ -38,7 +38,7 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>8</x>
+       <x>12</x>
        <y>20</y>
        <width>56</width>
        <height>22</height>
@@ -75,9 +75,9 @@
     <widget class="QComboBox" name="comboPort">
      <property name="geometry">
       <rect>
-       <x>69</x>
+       <x>74</x>
        <y>20</y>
-       <width>81</width>
+       <width>90</width>
        <height>22</height>
       </rect>
      </property>
@@ -88,7 +88,7 @@
     <widget class="QLabel" name="label_1">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>179</x>
        <y>23</y>
        <width>64</width>
        <height>22</height>
@@ -106,9 +106,9 @@
     <widget class="QComboBox" name="comboBaudRate">
      <property name="geometry">
       <rect>
-       <x>230</x>
+       <x>247</x>
        <y>20</y>
-       <width>80</width>
+       <width>90</width>
        <height>22</height>
       </rect>
      </property>
@@ -122,9 +122,9 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>8</x>
+       <x>12</x>
        <y>54</y>
-       <width>148</width>
+       <width>154</width>
        <height>24</height>
       </rect>
      </property>
@@ -141,9 +141,9 @@
      </property>
      <property name="geometry">
       <rect>
-       <x>163</x>
+       <x>177</x>
        <y>54</y>
-       <width>148</width>
+       <width>161</width>
        <height>24</height>
       </rect>
      </property>
@@ -157,7 +157,7 @@
     <widget class="QLabel" name="labelStatus">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>220</x>
        <y>0</y>
        <width>110</width>
        <height>14</height>
@@ -173,7 +173,7 @@
     <widget class="QLabel" name="iconStatus">
      <property name="geometry">
       <rect>
-       <x>300</x>
+       <x>320</x>
        <y>2</y>
        <width>11</width>
        <height>11</height>
@@ -193,9 +193,9 @@
    <widget class="QGroupBox" name="groupExport">
     <property name="geometry">
      <rect>
-      <x>213</x>
+      <x>235</x>
       <y>256</y>
-      <width>114</width>
+      <width>125</width>
       <height>80</height>
      </rect>
     </property>
@@ -211,9 +211,9 @@
     <widget class="QPushButton" name="exportBtn">
      <property name="geometry">
       <rect>
-       <x>9</x>
+       <x>10</x>
        <y>24</y>
-       <width>98</width>
+       <width>105</width>
        <height>43</height>
       </rect>
      </property>
@@ -235,7 +235,7 @@ Excel </string>
    <widget class="QGroupBox" name="groupGraph">
     <property name="geometry">
      <rect>
-      <x>336</x>
+      <x>370</x>
       <y>10</y>
       <width>541</width>
       <height>531</height>
@@ -262,7 +262,7 @@ Excel </string>
      <rect>
       <x>10</x>
       <y>343</y>
-      <width>317</width>
+      <width>350</width>
       <height>198</height>
      </rect>
     </property>
@@ -278,9 +278,9 @@ Excel </string>
     <widget class="QTableWidget" name="tableData">
      <property name="geometry">
       <rect>
-       <x>7</x>
+       <x>12</x>
        <y>20</y>
-       <width>302</width>
+       <width>327</width>
        <height>170</height>
       </rect>
      </property>
@@ -351,7 +351,7 @@ Excel </string>
      <rect>
       <x>10</x>
       <y>100</y>
-      <width>317</width>
+      <width>350</width>
       <height>153</height>
      </rect>
     </property>
@@ -437,7 +437,7 @@ Excel </string>
     <widget class="QLabel" name="pdResult">
      <property name="geometry">
       <rect>
-       <x>253</x>
+       <x>284</x>
        <y>22</y>
        <width>52</width>
        <height>16</height>
@@ -453,7 +453,7 @@ Excel </string>
     <widget class="QLabel" name="fiResult">
      <property name="geometry">
       <rect>
-       <x>253</x>
+       <x>284</x>
        <y>76</y>
        <width>52</width>
        <height>16</height>
@@ -469,7 +469,7 @@ Excel </string>
     <widget class="QLabel" name="fiTotResult">
      <property name="geometry">
       <rect>
-       <x>253</x>
+       <x>284</x>
        <y>103</y>
        <width>52</width>
        <height>16</height>
@@ -485,7 +485,7 @@ Excel </string>
     <widget class="QLabel" name="frResult">
      <property name="geometry">
       <rect>
-       <x>253</x>
+       <x>284</x>
        <y>130</y>
        <width>52</width>
        <height>16</height>
@@ -501,7 +501,7 @@ Excel </string>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>253</x>
+       <x>284</x>
        <y>0</y>
        <width>52</width>
        <height>14</height>
@@ -532,7 +532,7 @@ Excel </string>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>118</x>
+       <x>152</x>
        <y>0</y>
        <width>60</width>
        <height>14</height>
@@ -563,7 +563,7 @@ Excel </string>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>222</x>
        <y>0</y>
        <width>52</width>
        <height>13</height>
@@ -601,7 +601,7 @@ Excel </string>
     <widget class="QLabel" name="gearTeethResult">
      <property name="geometry">
       <rect>
-       <x>253</x>
+       <x>284</x>
        <y>50</y>
        <width>52</width>
        <height>16</height>
@@ -617,7 +617,7 @@ Excel </string>
     <widget class="QLabel" name="frRef">
      <property name="geometry">
       <rect>
-       <x>193</x>
+       <x>222</x>
        <y>127</y>
        <width>52</width>
        <height>16</height>
@@ -633,7 +633,7 @@ Excel </string>
     <widget class="QLabel" name="fiRef">
      <property name="geometry">
       <rect>
-       <x>193</x>
+       <x>222</x>
        <y>73</y>
        <width>52</width>
        <height>16</height>
@@ -649,7 +649,7 @@ Excel </string>
     <widget class="QLabel" name="fiTotRef">
      <property name="geometry">
       <rect>
-       <x>193</x>
+       <x>222</x>
        <y>100</y>
        <width>52</width>
        <height>16</height>
@@ -665,9 +665,9 @@ Excel </string>
     <widget class="QLineEdit" name="inputPd">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>152</x>
        <y>20</y>
-       <width>58</width>
+       <width>60</width>
        <height>20</height>
       </rect>
      </property>
@@ -675,9 +675,9 @@ Excel </string>
     <widget class="QLineEdit" name="inputGearTeeth">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>152</x>
        <y>45</y>
-       <width>58</width>
+       <width>60</width>
        <height>20</height>
       </rect>
      </property>
@@ -685,9 +685,9 @@ Excel </string>
     <widget class="QLineEdit" name="inputFi">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>152</x>
        <y>72</y>
-       <width>58</width>
+       <width>60</width>
        <height>20</height>
       </rect>
      </property>
@@ -695,9 +695,9 @@ Excel </string>
     <widget class="QLineEdit" name="input_fi">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>152</x>
        <y>99</y>
-       <width>58</width>
+       <width>60</width>
        <height>20</height>
       </rect>
      </property>
@@ -705,9 +705,9 @@ Excel </string>
     <widget class="QLineEdit" name="inputFr">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>152</x>
        <y>126</y>
-       <width>58</width>
+       <width>60</width>
        <height>20</height>
       </rect>
      </property>
@@ -718,7 +718,7 @@ Excel </string>
      <rect>
       <x>10</x>
       <y>256</y>
-      <width>197</width>
+      <width>215</width>
       <height>80</height>
      </rect>
     </property>
@@ -737,9 +737,9 @@ Excel </string>
      </property>
      <property name="geometry">
       <rect>
-       <x>7</x>
+       <x>12</x>
        <y>21</y>
-       <width>88</width>
+       <width>90</width>
        <height>23</height>
       </rect>
      </property>
@@ -762,9 +762,9 @@ Excel </string>
      </property>
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>115</x>
        <y>21</y>
-       <width>88</width>
+       <width>90</width>
        <height>23</height>
       </rect>
      </property>
@@ -784,9 +784,9 @@ Excel </string>
     <widget class="QPushButton" name="clearBtn">
      <property name="geometry">
       <rect>
-       <x>7</x>
+       <x>12</x>
        <y>48</y>
-       <width>182</width>
+       <width>193</width>
        <height>22</height>
       </rect>
      </property>
@@ -806,7 +806,7 @@ Excel </string>
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>125</x>
+       <x>140</x>
        <y>0</y>
        <width>62</width>
        <height>14</height>
@@ -822,7 +822,7 @@ Excel </string>
     <widget class="QLabel" name="recordIconStatus">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>195</x>
        <y>2</y>
        <width>11</width>
        <height>11</height>
