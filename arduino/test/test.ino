@@ -1,12 +1,12 @@
-#include "Shahe_DialRead.h"
-
-#define UARTBaudRate 9600
-#define INIT_STEPPER 360
-#define STEP_INTERVAL 500
+#define UARTBaudRate 115200
+#define INIT_STEPPER 36
+#define STEP_INTERVAL 100
 
 #define dirPin 2 // Orange Line CW+
 #define stepPin 3 // Yellow Line CLK+
+#define ledPin 13
 
+bool ledStage = false;
 String inputString = "";
 
 bool init_motor = false;
@@ -16,18 +16,15 @@ bool process_done = false;
 unsigned short counter_degree = 0;
 unsigned long previousMillis = 0;
 
-void get_dial_data();
-void motor_one_degree();
+void get_dial_data(){
+  ledStage = !ledStage;
+  digitalWrite(ledPin, ledStage);
+  Serial.print(random(-100, 100) / 10.0);
+  Serial.println();
+}
 
 void setup() {
-  // set ADC prescale to 16 (set ADC clock to 1MHz)
-  // this gives as a sampling rate of ~77kSps
-  sbi(ADCSRA, ADPS2);
-  cbi(ADCSRA, ADPS1);
-  cbi(ADCSRA, ADPS0);
-  
-  pinMode(stepPin, OUTPUT);
-  pinMode(dirPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
   
   Serial.begin(UARTBaudRate);
   Serial.println("..c..");
@@ -37,7 +34,7 @@ void setup() {
 void loop() {
   if (init_motor) {
     if (counter_degree < INIT_STEPPER) {
-      motor_one_degree();
+      delay(100);
       counter_degree++;
     } else {
       init_motor = false;
@@ -51,7 +48,6 @@ void loop() {
       unsigned long currentMillis = millis();
       if ((unsigned long)(currentMillis - previousMillis) >= STEP_INTERVAL) {
         get_dial_data();
-        motor_one_degree();
         counter_degree++;
         previousMillis = currentMillis;
       }
@@ -75,37 +71,16 @@ void serialEvent() {
     inputString += inChar;
     
     if (inChar == '\n') { // if string completed
-        Serial.print("COMMAND: ");
         if (inputString == "start\n" & !init_motor & !running_motor){
-          Serial.println(inputString);
           init_motor = true;
           process_done = false;
         } else if (inputString == "stop\n"){
-          Serial.println(inputString);
           init_motor = false;
           running_motor = false;
-          process_done = false;
+          process_done = true;
           counter_degree = 0;
-        }else {
-          Serial.println("invalid!!");  
         }
         inputString="";
     }
-  }
-}
-
-void get_dial_data(){
-    bool is_inch;
-    prettyPrintValue(getValue(is_inch), is_inch);
-    Serial.println();
-}
-
-void motor_one_degree() {
-  //Spin the stepper motor 1 revolution slowly:
-  for (int i = 0; i < 84; i++) {
-    digitalWrite(stepPin, HIGH);
-    delayMicroseconds(100);
-    digitalWrite(stepPin, LOW);
-    delayMicroseconds(100);
   }
 }
