@@ -75,19 +75,14 @@ void serialEvent() {
     inputString += inChar;
     
     if (inChar == '\n') { // if string completed
-        Serial.print("COMMAND: ");
         if (inputString == "start\n" & !init_motor & !running_motor){
-          Serial.println(inputString);
           init_motor = true;
           process_done = false;
         } else if (inputString == "stop\n"){
-          Serial.println(inputString);
           init_motor = false;
           running_motor = false;
-          process_done = false;
+          process_done = true;
           counter_degree = 0;
-        }else {
-          Serial.println("invalid!!");  
         }
         inputString="";
     }
