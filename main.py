@@ -163,7 +163,7 @@ class MyWindow(QtWidgets.QMainWindow):
             self.labelStatus.setText('Status : Connected')
             self.setToleranceValue()
             self.fiResult.setText('0.00')
-            self.fiTotResult.setText('{:.2f}'.format(self.maximumData))
+            self.fiTotResult.setText('0.00')
             self.frResult.setText('0.000')
             self.scanBtn.setEnabled(False)
             self.disconnectBtn.setEnabled(True)
@@ -252,6 +252,10 @@ class MyWindow(QtWidgets.QMainWindow):
         self.stopBtn.setEnabled(False)
 
     def clearClick(self):
+        self.setToleranceValue()
+        self.fiResult.setText('0.00')
+        self.fiTotResult.setText('0.00')
+        self.frResult.setText('0.000')
         self.tableData.setRowCount(0)
         n_data = 60
         self.x_angles = list(range(n_data))
@@ -280,7 +284,7 @@ class MyWindow(QtWidgets.QMainWindow):
             self.pdResult.setText(str(self.pdValue))
             self.inputPd.clear()
 
-    def setToleranceValue(self, maximun=0.00, minimun=9999.00, summary=0.00):
+    def setToleranceValue(self, maximun=-8192.00, minimun=8192.00, summary=0.00):
         self.maximumData = maximun
         self.minimumData = minimun
         self.sumData = summary
