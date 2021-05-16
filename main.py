@@ -143,8 +143,8 @@ class MyWindow(QtWidgets.QMainWindow):
         self.maximumData = fdata if fdata > self.maximumData else self.maximumData
         self.minimumData = fdata if fdata < self.minimumData else self.minimumData
         self.sumData = round(self.sumData + fdata, 2)
-        self.fiTotResult.setText('{:.2f}'.format(self.maximumData))
-        self.fiResult.setText('{:.2f}'.format(
+        self.fiTotResult.setText('{:.3f}'.format(self.maximumData))
+        self.fiResult.setText('{:.3f}'.format(
             self.maximumData-self.minimumData))
         self.frResult.setText('{:.3f}'.format(
             self.sumData/float(self.tableData.rowCount())))
@@ -162,8 +162,8 @@ class MyWindow(QtWidgets.QMainWindow):
                 QtGui.QPixmap('resource/images/Green.png'))
             self.labelStatus.setText('Status : Connected')
             self.setToleranceValue()
-            self.fiResult.setText('0.00')
-            self.fiTotResult.setText('0.00')
+            self.fiResult.setText('0.000')
+            self.fiTotResult.setText('0.000')
             self.frResult.setText('0.000')
             self.scanBtn.setEnabled(False)
             self.disconnectBtn.setEnabled(True)
@@ -218,6 +218,11 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def startClick(self):
         self.clearClick()
+        self.inputGearTeeth.setDisabled(True)
+        if ('Waiting..' not in self.gearTeethResult.text()):
+          self.motor_pulse = round(self.gearTeethValue * 30240 / (55*360))
+          command = 'setTeeth {}\n'.format(self.motor_pulse)
+          self.ser.write(bytes(command, encoding='utf-8'))
         # initial thread
         self.thread = QtCore.QThread()
         self.worker = Worker(self.ser)
@@ -250,11 +255,12 @@ class MyWindow(QtWidgets.QMainWindow):
             QtGui.QPixmap('resource/images/Red.png'))
         self.startBtn.setEnabled(True)
         self.stopBtn.setEnabled(False)
+        self.inputGearTeeth.setDisabled(False)
 
     def clearClick(self):
         self.setToleranceValue()
-        self.fiResult.setText('0.00')
-        self.fiTotResult.setText('0.00')
+        self.fiResult.setText('0.000')
+        self.fiTotResult.setText('0.000')
         self.frResult.setText('0.000')
         self.tableData.setRowCount(0)
         n_data = 60
@@ -294,6 +300,11 @@ class MyWindow(QtWidgets.QMainWindow):
             self.gearTeethValue = float(self.inputGearTeeth.text())
             self.gearTeethResult.setText(str(self.gearTeethValue))
             self.inputGearTeeth.clear()
+            if (self.ser.is_open):
+              self.motor_pulse = round(self.gearTeethValue * 30240 / (55*360))
+              command = 'setTeeth {}\n'.format(self.motor_pulse)
+              self.ser.write(bytes(command, encoding='utf-8'))
+
 
     def insertRadialComposite(self):
         if (checkFloat(self.inputFi.text())):

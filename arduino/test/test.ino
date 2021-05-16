@@ -15,6 +15,7 @@ bool process_done = false;
 
 unsigned short counter_degree = 0;
 unsigned long previousMillis = 0;
+unsigned int gearTeeth = 84;
 
 void get_dial_data(){
   ledStage = !ledStage;
@@ -79,6 +80,8 @@ void serialEvent() {
           running_motor = false;
           process_done = true;
           counter_degree = 0;
+        } else if (inputString.indexOf("setTeeth") >= 0){
+          gearTeeth = inputString.substring(9, inputString.length()-1).toInt();
         }
         inputString="";
     }

@@ -15,6 +15,7 @@ bool process_done = false;
 
 unsigned short counter_degree = 0;
 unsigned long previousMillis = 0;
+unsigned int gearTeeth = 84;
 
 void get_dial_data();
 void motor_one_degree();
@@ -83,6 +84,8 @@ void serialEvent() {
           running_motor = false;
           process_done = true;
           counter_degree = 0;
+        } else if (inputString.indexOf("setTeeth") >= 0){
+          gearTeeth = inputString.substring(9, inputString.length()-1).toInt();
         }
         inputString="";
     }
@@ -97,7 +100,7 @@ void get_dial_data(){
 
 void motor_one_degree() {
   //Spin the stepper motor 1 revolution slowly:
-  for (int i = 0; i < 84; i++) {
+  for (int i = 0; i < gearTeeth; i++) {
     digitalWrite(stepPin, HIGH);
     delayMicroseconds(100);
     digitalWrite(stepPin, LOW);
