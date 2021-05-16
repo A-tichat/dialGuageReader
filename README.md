@@ -11,5 +11,5 @@ double click run.bat
 
 # Fix Permission
 
-sudo usermod -a -G dialout xxxUSERxxx
-sudo chmod a+rw /dev/xxxPROTxxx
+- sudo usermod -a -G dialout xxxUSERxxx
+- sudo chmod a+rw /dev/xxxPROTxxx
